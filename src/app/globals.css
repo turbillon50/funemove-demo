@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0A0A0A;
+  --color-gold: #C9A84C;
+  --color-surface: #1A1A1A;
+  --color-surface2: #242424;
+}
+
+html, body {
+  background: #0A0A0A;
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Clases custom para que Tailwind no las purgue */
+.bg-bg { background-color: #0A0A0A !important; }
+.bg-surface { background-color: #1A1A1A !important; }
+.bg-surface2 { background-color: #242424 !important; }
+.bg-gold { background-color: #C9A84C !important; }
+.text-gold { color: #C9A84C !important; }
+.border-gold { border-color: #C9A84C !important; }
+.font-heading { font-family: var(--font-cormorant), serif; }
+.font-ui { font-family: var(--font-inter), sans-serif; }
