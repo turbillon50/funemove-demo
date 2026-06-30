@@ -1,82 +1,86 @@
 'use client'
-import {motion} from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import {operators} from '@/lib/demo-data'
 
-export default function HomeCliente(){
-  return(
-    <div className="flex flex-col min-h-screen" style={{background:'#0A0A0A'}}>
+export default function HomeCliente() {
+  return (
+    <main style={{minHeight:'100vh', background:'#F8F5EF', position:'relative', overflowX:'hidden'}}>
+      <div style={{position:'absolute', top:'-120px', left:'50%', transform:'translateX(-50%)', width:'520px', height:'520px', background:'radial-gradient(circle,rgba(184,150,90,.20),transparent 70%)', pointerEvents:'none', zIndex:0}}/>
+
       {/* Header */}
-      <header style={{padding:'1rem 1.25rem',background:'#111',borderBottom:'1px solid #1e1e1e',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-        <h1 style={{fontFamily:'var(--font-cormorant),serif',color:'#C9A84C',fontSize:'1.6rem',letterSpacing:'0.15em'}}>FUNEMOVE</h1>
-        <div style={{fontSize:'0.7rem',color:'#555',letterSpacing:'0.1em'}}>CDMX · 4 disponibles</div>
+      <header style={{
+        position:'sticky', top:0, zIndex:40,
+        background:'rgba(248,245,239,.92)', backdropFilter:'blur(12px) saturate(140%)',
+        padding:'12px 18px', display:'flex', alignItems:'center', gap:'10px',
+        borderBottom:'1px solid rgba(12,30,60,.06)',
+      }}>
+        <Image src="/brand/logo-header.png" alt="FUNEMOVE" width={40} height={40} style={{objectFit:'contain'}}/>
+        <span className="serif" style={{fontSize:'19px', fontWeight:800, letterSpacing:'1.5px', color:'#0C1E3C', flex:1}}>FUNEMOVE</span>
+        <span style={{fontSize:'11px', color:'#8a6d35', fontWeight:600}}>CDMX</span>
       </header>
 
-      {/* Mapa simulado */}
-      <div style={{height:'280px',position:'relative',background:'#0d0d0d',
-        backgroundImage:'linear-gradient(#1a1a1a 1px,transparent 1px),linear-gradient(90deg,#1a1a1a 1px,transparent 1px)',
-        backgroundSize:'36px 36px',overflow:'hidden'}}>
-        {/* Pin A */}
-        <motion.div animate={{scale:[1,1.4,1]}} transition={{repeat:Infinity,duration:2,ease:'easeInOut'}}
-          style={{position:'absolute',top:'35%',left:'30%',width:'24px',height:'24px'}}>
-          <svg viewBox="0 0 24 24" fill="#C9A84C"><path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 14 8 14s8-8.5 8-14A8 8 0 0 0 12 2zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-        </motion.div>
-        {/* Pin B */}
-        <motion.div animate={{scale:[1,1.3,1]}} transition={{repeat:Infinity,duration:2.5,delay:0.8}}
-          style={{position:'absolute',bottom:'28%',right:'28%',width:'20px',height:'20px'}}>
-          <svg viewBox="0 0 24 24" fill="#C9A84C" opacity="0.6"><path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 14 8 14s8-8.5 8-14A8 8 0 0 0 12 2zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-        </motion.div>
-        {/* Carroza animada */}
-        <motion.div animate={{x:['-10%','80%']}} transition={{repeat:Infinity,duration:8,ease:'linear'}}
-          style={{position:'absolute',top:'42%',left:0}}>
-          <svg width="32" height="20" viewBox="0 0 80 48" fill="none">
-            <rect x="4" y="20" width="72" height="18" rx="4" fill="#C9A84C"/>
-            <rect x="12" y="10" width="48" height="12" rx="3" fill="#C9A84C" opacity="0.7"/>
-            <circle cx="18" cy="40" r="6" fill="#0A0A0A" stroke="#C9A84C" strokeWidth="1.5"/>
-            <circle cx="62" cy="40" r="6" fill="#0A0A0A" stroke="#C9A84C" strokeWidth="1.5"/>
-          </svg>
-        </motion.div>
-        {/* Label */}
-        <div style={{position:'absolute',bottom:'8px',right:'10px',fontSize:'0.6rem',color:'#333',letterSpacing:'0.1em'}}>MAPA SIMULADO</div>
-        {/* CTA flotante sobre mapa */}
-        <div style={{position:'absolute',bottom:'12px',left:'12px',right:'12px'}}>
-          <Link href="/solicitar" style={{display:'block',background:'rgba(10,10,10,0.85)',backdropFilter:'blur(8px)',border:'1px solid #2a2a2a',borderRadius:'12px',padding:'0.9rem 1rem',color:'#555',fontSize:'0.9rem',textDecoration:'none'}}>
-            📍 ¿A dónde necesitas el traslado?
-          </Link>
-        </div>
-      </div>
+      <div style={{position:'relative', zIndex:1, padding:'18px', display:'flex', flexDirection:'column', gap:'28px', maxWidth:'720px', margin:'0 auto'}}>
 
-      {/* Carrozas cercanas */}
-      <div style={{padding:'1.25rem',flex:1}}>
-        <p style={{fontSize:'0.65rem',color:'#555',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.75rem'}}>Carrozas cercanas</p>
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0.75rem',marginBottom:'1.25rem'}}>
-          {operators.map(op=>(
-            <motion.div key={op.id} whileHover={{scale:1.02}}
-              style={{background:'#161616',border:'1px solid #222',borderRadius:'14px',padding:'0.9rem'}}>
-              <div style={{display:'flex',alignItems:'center',gap:'0.6rem',marginBottom:'0.5rem'}}>
-                <div style={{width:'32px',height:'32px',borderRadius:'50%',background:'#222',display:'flex',alignItems:'center',justifyContent:'center',color:'#C9A84C',fontWeight:700,fontSize:'0.85rem'}}>
+        {/* Hero solicitar */}
+        <section style={{textAlign:'center', paddingTop:'8px'}}>
+          <p style={{color:'#8a6d35', letterSpacing:'2px', fontSize:'11px', fontWeight:700, marginBottom:'10px'}}>
+            SERVICIO FUNERARIO DE TRASLADO · 24/7
+          </p>
+          <h1 className="serif" style={{fontSize:'30px', lineHeight:1.15, fontWeight:800, color:'#0C1E3C', letterSpacing:'-0.3px', marginBottom:'10px'}}>
+            ¿A dónde necesitas<br/>el traslado?
+          </h1>
+          <p style={{color:'#6b7280', fontSize:'14px', lineHeight:1.6, maxWidth:'380px', margin:'0 auto'}}>
+            Operadores certificados, seguro incluido, llegan en minutos con dignidad.
+          </p>
+
+          <Link href="/solicitar" style={{textDecoration:'none'}}>
+            <button className="btn-primary" style={{marginTop:'20px', maxWidth:'400px'}}>
+              Solicitar carroza ahora
+            </button>
+          </Link>
+        </section>
+
+        {/* Stats de confianza */}
+        <section className="card" style={{padding:'18px 16px', display:'flex', justifyContent:'space-around', textAlign:'center'}}>
+          <div style={{display:'flex', flexDirection:'column', gap:'3px', flex:1}}>
+            <span className="mono" style={{fontSize:'20px', fontWeight:800, color:'#B8965A'}}>2,340</span>
+            <span style={{fontSize:'11px', color:'#6b7280'}}>servicios realizados</span>
+          </div>
+          <div style={{display:'flex', flexDirection:'column', gap:'3px', flex:1, borderLeft:'1px solid rgba(12,30,60,.08)'}}>
+            <span className="mono" style={{fontSize:'20px', fontWeight:800, color:'#B8965A'}}>4.9 ⭐</span>
+            <span style={{fontSize:'11px', color:'#6b7280'}}>calificación</span>
+          </div>
+          <div style={{display:'flex', flexDirection:'column', gap:'3px', flex:1, borderLeft:'1px solid rgba(12,30,60,.08)'}}>
+            <span className="mono" style={{fontSize:'20px', fontWeight:800, color:'#B8965A'}}>18</span>
+            <span style={{fontSize:'11px', color:'#6b7280'}}>operadores activos</span>
+          </div>
+        </section>
+
+        {/* Carrozas disponibles */}
+        <section>
+          <p className="section-title">Carrozas disponibles cerca de ti</p>
+          <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
+            {operators.map(op => (
+              <div key={op.id} className="card" style={{display:'flex', gap:'14px', alignItems:'center', padding:'14px'}}>
+                <div style={{
+                  width:'50px', height:'50px', borderRadius:'50%',
+                  background:'#EDE6D8', display:'flex', alignItems:'center', justifyContent:'center',
+                  color:'#B8965A', fontWeight:700, fontSize:'18px', fontFamily:'var(--font-playfair),serif',
+                  border:'2px solid #B8965A',
+                }}>
                   {op.name[0]}
                 </div>
-                <div>
-                  <p style={{color:'#fff',fontSize:'0.8rem',lineHeight:1.2}}>{op.name.split(' ')[0]}</p>
-                  <p style={{color:'#555',fontSize:'0.65rem'}}>{op.city}</p>
+                <div style={{flex:1}}>
+                  <p className="serif" style={{fontWeight:700, fontSize:'15px', color:'#0C1E3C'}}>{op.name}</p>
+                  <p style={{fontSize:'12px', color:'#6b7280'}}>{op.city} · {op.plate}</p>
                 </div>
+                <span className="mono" style={{fontSize:'13px', fontWeight:700, color:'#8a6d35'}}>⭐{op.rating}</span>
               </div>
-              <div style={{display:'flex',justifyContent:'space-between'}}>
-                <span style={{color:'#C9A84C',fontSize:'0.7rem'}}>⭐ {op.rating}</span>
-                <span style={{color:'#444',fontSize:'0.65rem'}}>{op.plate}</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <Link href="/solicitar">
-          <motion.button whileHover={{scale:1.02}} whileTap={{scale:0.97}}
-            style={{width:'100%',padding:'1.1rem',background:'#C9A84C',color:'#0A0A0A',fontWeight:700,borderRadius:'14px',fontSize:'1rem',border:'none',cursor:'pointer',letterSpacing:'0.05em'}}>
-            Solicitar carroza ahora
-          </motion.button>
-        </Link>
+            ))}
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
   )
 }

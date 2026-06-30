@@ -3,24 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #0A0A0A;
-  --color-gold: #C9A84C;
-  --color-surface: #1A1A1A;
-  --color-surface2: #242424;
+  --bg: #F8F5EF;
+  --navy: #0C1E3C;
+  --navy-light: #16294d;
+  --gold: #B8965A;
+  --green: #1A4D3A;
+  --text: #0C1E3C;
+  --text2: #6b7280;
+  --border: rgba(12,30,60,0.08);
 }
 
 html, body {
-  background: #0A0A0A;
-  color: #fff;
+  background: #F8F5EF;
+  color: #0C1E3C;
   font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Clases custom para que Tailwind no las purgue */
-.bg-bg { background-color: #0A0A0A !important; }
-.bg-surface { background-color: #1A1A1A !important; }
-.bg-surface2 { background-color: #242424 !important; }
-.bg-gold { background-color: #C9A84C !important; }
-.text-gold { color: #C9A84C !important; }
-.border-gold { border-color: #C9A84C !important; }
-.font-heading { font-family: var(--font-cormorant), serif; }
-.font-ui { font-family: var(--font-inter), sans-serif; }
+.serif { font-family: var(--font-playfair), serif; }
+.mono { font-family: var(--font-mono), monospace; }
+
+.card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid rgba(12,30,60,0.06);
+  box-shadow: 0 2px 12px rgba(12,30,60,0.04);
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8a6d35;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background: #0C1E3C;
+  color: #F8F5EF;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-gold {
+  background: #B8965A;
+  color: #0C1E3C;
+}
